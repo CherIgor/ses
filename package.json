@@ -1,15 +1,13 @@
 {
-  "name": "ses-igor",
-  "version": "1.0.0",
-  "repository": {
-    "type": "git",
-    "url": "https://github.com/CherIgor/ses"
-  },
-  "private": true,
-  "dependencies": {
-  },
+  "name": "create-next-example-app",
   "scripts": {
+    "dev": "next",
+    "build": "next build",
+    "start": "next start"
   },
-  "devDependencies": {
+  "dependencies": {
+    "next": "^6.1.1",
+    "react": "^16.4.1",
+    "react-dom": "^16.4.1"
   }
 }
