@@ -4,7 +4,7 @@ import {connect} from 'react-redux'
 import Counter from './counter'
 import Clock from './clock'
 
-function Page ({error, lastUpdate, light, linkTo, NavigateTo, placeholderData, title}) {
+function Page ({linkTo, navigateTo, title, example: {error, lastUpdate, light, placeholderData}}) {
   return (
     <div>
       <h1>
@@ -14,7 +14,7 @@ function Page ({error, lastUpdate, light, linkTo, NavigateTo, placeholderData, t
       <Counter />
       <nav>
         <Link href={linkTo}>
-          <a>Navigate: {NavigateTo}</a>
+          <a>Navigate: {navigateTo}</a>
         </Link>
       </nav>
       {placeholderData &&
@@ -31,4 +31,5 @@ function Page ({error, lastUpdate, light, linkTo, NavigateTo, placeholderData, t
   )
 }
 
-export default connect(state => state)(Page)
+const mapStateToProps = ({example}) => ({example})
+export default connect(mapStateToProps)(Page)

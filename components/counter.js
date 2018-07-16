@@ -36,5 +36,5 @@ class Counter extends Component {
   }
 }
 
-const mapStateToProps = ({count}) => ({count})
+const mapStateToProps = ({example: {count}}) => ({count})
 export default connect(mapStateToProps)(Counter)

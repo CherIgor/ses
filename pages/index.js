@@ -21,7 +21,7 @@ class Index extends React.Component {
   }
 
   render () {
-    return <Page title='Index Page' linkTo='/other' NavigateTo='Other Page' />
+    return <Page title='Index Page' linkTo='/other' navigateTo='Other Page' />
   }
 }
 
