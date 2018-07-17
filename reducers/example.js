@@ -1,3 +1,5 @@
+import { createReducer, Types as ReduxSauceTypes } from 'reduxsauce'
+
 import actionTypes from '../actions'
 
 const INITIAL_STATE = {
@@ -8,47 +10,44 @@ const INITIAL_STATE = {
   placeholderData: null
 }
 
-function reducer (state = INITIAL_STATE, action) {
-  switch (action.type) {
-    case actionTypes.EXAMPLE_FAILURE:
-      return {
-        ...state,
-        ...{error: action.error}
-      }
+const failure = (state, action) => ({
+  ...state,
+  ...{error: action.error}
+})
 
-    case actionTypes.EXAMPLE_INCREMENT:
-      return {
-        ...state,
-        ...{count: state.count + 1}
-      }
+const increment = (state, action) => ({
+  ...state,
+  ...{count: state.count + 1}
+})
 
-    case actionTypes.EXAMPLE_DECREMENT:
-      return {
-        ...state,
-        ...{count: state.count - 1}
-      }
+const decrement = (state, action) => ({
+  ...state,
+  ...{count: state.count - 1}
+})
 
-    case actionTypes.EXAMPLE_RESET:
-      return {
-        ...state,
-        ...{count: INITIAL_STATE.count}
-      }
+const reset = (state, action) => ({
+  ...state,
+  ...{count: INITIAL_STATE.count}
+})
 
-    case actionTypes.EXAMPLE_LOAD_DATA_SUCCESS:
-      return {
-        ...state,
-        ...{placeholderData: action.data}
-      }
+const loadDataSuccess = (state, action) => ({
+  ...state,
+  ...{placeholderData: action.data}
+})
 
-    case actionTypes.EXAMPLE_TICK_CLOCK:
-      return {
-        ...state,
-        ...{lastUpdate: action.ts, light: !!action.light}
-      }
+const tickClock = (state, action) => ({
+  ...state,
+  ...{lastUpdate: action.ts, light: !!action.light}
+})
 
-    default:
-      return state
-  }
+const HANDLERS = {
+  [actionTypes.EXAMPLE_FAILURE]: failure,
+  [actionTypes.EXAMPLE_INCREMENT]: increment,
+  [actionTypes.EXAMPLE_DECREMENT]: decrement,
+  [actionTypes.EXAMPLE_RESET]: reset,
+  [actionTypes.EXAMPLE_LOAD_DATA_SUCCESS]: loadDataSuccess,
+  [actionTypes.EXAMPLE_TICK_CLOCK]: tickClock,
+  [ReduxSauceTypes.DEFAULT]: (state, action) => state,
 }
-
-export default reducer
+ 
+export default createReducer(INITIAL_STATE, HANDLERS)
