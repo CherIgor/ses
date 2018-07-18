@@ -1,43 +1,19 @@
-import actionTypes from './'
+import { createActions } from 'reduxsauce'
 
-export function failure (error) {
-  return {
-    type: actionTypes.EXAMPLE_FAILURE,
-    error
-  }
-}
+const prefix = 'EXAMPLE_'
 
-export function increment () {
-  return {type: actionTypes.EXAMPLE_INCREMENT}
-}
+const { Types, Creators } = createActions({
+  failure: ['error'],
+  increment: null,
+  decrement: null,
+  reset: null,
+  loadData: null,
+  loadDataSuccess: ['data'],
+  startClock: null,
+  tickClock: isServer => ({ type: `${prefix}TICK_CLOCK`, light: !isServer, ts: Date.now() }),
+}, {
+  prefix,
+}) // options - the 2nd parameter is optional
 
-export function decrement () {
-  return {type: actionTypes.EXAMPLE_DECREMENT}
-}
-
-export function reset () {
-  return {type: actionTypes.EXAMPLE_RESET}
-}
-
-export function loadData () {
-  return {type: actionTypes.EXAMPLE_LOAD_DATA}
-}
-
-export function loadDataSuccess (data) {
-  return {
-    type: actionTypes.EXAMPLE_LOAD_DATA_SUCCESS,
-    data
-  }
-}
-
-export function startClock () {
-  return {type: actionTypes.EXAMPLE_START_CLOCK}
-}
-
-export function tickClock (isServer) {
-  return {
-    type: actionTypes.EXAMPLE_TICK_CLOCK,
-    light: !isServer,
-    ts: Date.now()
-  }
-}
+export const actionTypes = Types
+export default Creators

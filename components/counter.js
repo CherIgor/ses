@@ -1,19 +1,19 @@
 import React, {Component} from 'react'
 import {connect} from 'react-redux'
 
-import {increment, decrement, reset} from '../actions/example'
+import exampleActionCreators from '../actions/example'
 
 class Counter extends Component {
   increment = () => {
-    this.props.dispatch(increment())
+    this.props.dispatch(exampleActionCreators.increment())
   }
 
   decrement = () => {
-    this.props.dispatch(decrement())
+    this.props.dispatch(exampleActionCreators.decrement())
   }
 
   reset = () => {
-    this.props.dispatch(reset())
+    this.props.dispatch(exampleActionCreators.reset())
   }
 
   render () {

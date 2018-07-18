@@ -5,6 +5,5 @@ import example from './example'
 
 export default combineReducers({
   example,
-
   form: formReducer,
 })

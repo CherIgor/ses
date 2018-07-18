@@ -1,6 +1,6 @@
 import { createReducer, Types as ReduxSauceTypes } from 'reduxsauce'
 
-import actionTypes from '../actions'
+import { actionTypes as exampleActionTypes } from '../actions/example'
 
 const INITIAL_STATE = {
   count: 0,
@@ -41,12 +41,12 @@ const tickClock = (state, action) => ({
 })
 
 const HANDLERS = {
-  [actionTypes.EXAMPLE_FAILURE]: failure,
-  [actionTypes.EXAMPLE_INCREMENT]: increment,
-  [actionTypes.EXAMPLE_DECREMENT]: decrement,
-  [actionTypes.EXAMPLE_RESET]: reset,
-  [actionTypes.EXAMPLE_LOAD_DATA_SUCCESS]: loadDataSuccess,
-  [actionTypes.EXAMPLE_TICK_CLOCK]: tickClock,
+  [exampleActionTypes.FAILURE]: failure,
+  [exampleActionTypes.INCREMENT]: increment,
+  [exampleActionTypes.DECREMENT]: decrement,
+  [exampleActionTypes.RESET]: reset,
+  [exampleActionTypes.LOAD_DATA_SUCCESS]: loadDataSuccess,
+  [exampleActionTypes.TICK_CLOCK]: tickClock,
   [ReduxSauceTypes.DEFAULT]: (state, action) => state,
 }
  
